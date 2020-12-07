@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: DocherHUB-Publishing
 
 # Controls when the action will run. 
 on:
@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
   
 jobs:
-  main:
+  build_and_push:
     runs-on: ubuntu-latest
     steps:
       - name: Set up QEMU
@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: achelak/cdr_cheker:latest
+          tags: achelak/cdr_checker:cdr_api_5.7
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

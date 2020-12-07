@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: achelak/cdr_checker:cdr_api_5.7
+          tags: achelak/cdr_checker:cdr_api_5.8
       
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

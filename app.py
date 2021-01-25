@@ -37,10 +37,10 @@ logger.add(log_file_path, format="{time} {level} {module} {message}",
            level="DEBUG", rotation="10 MB", retention="1 days", compression="zip")
 
 
-@app.route('/cdr_list', methods=['GET'])
-def get_list():
+@app.route('/cdr_list/<cdr_id>', methods=['GET'])
+def get_list(cdr_id):
     try:
-        cdr_list = CDR_Model.query.all()
+        cdr_list = CDR_Model.query.filter_by(id=cdr_id)
         serialized = []
         for cdr_string in cdr_list:
             serialized.append({
